@@ -14,10 +14,15 @@ public class Program2 {
 //        dao.insert(depFood);
 //        System.out.println("INSERTED DEPARTMENT");
 
-        System.out.println("\n==== UPDATE DEPARTMENT ====");
-        Department dep = dao.findById(1);
-        dep.setName("Cars");
-        dao.update(dep);
-        System.out.println("UPDATED DEPARTMENT");
+//        System.out.println("\n==== UPDATE DEPARTMENT ====");
+//        Department dep = dao.findById(1);
+//        dep.setName("Cars");
+//        dao.update(dep);
+//        System.out.println("UPDATED DEPARTMENT");
+
+        System.out.println("\n==== LIST DEPARTMENTS ====");
+        for (Department dep : dao.findAll()) {
+            System.out.println(dep.toString());
+        }
     }
 }
