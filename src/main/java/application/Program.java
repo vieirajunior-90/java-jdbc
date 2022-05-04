@@ -43,5 +43,11 @@ public class Program {
         sellerDao.insert(newSeller);
         System.out.println("Inserted! New id: " + newSeller.getId());
 
+        System.out.println("\n==== UPDATE SELLER ====");
+        Seller sellerToUpdate = sellerDao.findById(7);
+        sellerToUpdate.setBaseSalary(2500.0);
+        sellerDao.update(sellerToUpdate);
+        System.out.println("Updated!");
+
     }
 }
