@@ -1,32 +1,29 @@
 package application;
 
 import db.DB;
+import db.DBException;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
+import model.entities.Seller;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Reader;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Program {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
 
-        Connection connection = DB.getConnection();
-        Statement st = connection.createStatement();
+        SellerDao sellerDao = DaoFactory.createSellerDao();
 
-        try {
-            st.executeQuery("SELECT * FROM department");
-        }
-        catch (SQLException e) {
-            ScriptRunner sr = new ScriptRunner(connection);
-            Reader reader = new BufferedReader(new FileReader("src/main/resources/script.sql"));
-            sr.runScript(reader);
-        }
+        Seller seller = sellerDao.findById(3);
 
-
+        System.out.println(seller);
 
     }
 }
